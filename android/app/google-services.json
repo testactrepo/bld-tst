@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "674848053643",
+    "firebase_url": "https://blrd-tst.firebaseio.com",
+    "project_id": "blrd-tst",
+    "storage_bucket": "blrd-tst.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674848053643:android:9d00539fbc0c504a5fb78e",
+        "android_client_info": {
+          "package_name": "com.bld.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674848053643-jri8be595api3iq9t1knijuai653vcbv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEDKx7VuMWKH3F_62-8kY6l9320USrhaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674848053643-jri8be595api3iq9t1knijuai653vcbv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
