@@ -817,6 +817,7 @@ class _SignupViewState extends State<Signup> {
                             "timespent" :false,
                             "istestcompleted" :false,
                             "profilePicUrl":"",
+                            "istestpointclaimed" : false
                           }).then((value) {
                             setState(() {
                               isloading = false;

@@ -53,11 +53,12 @@ class _StatefulWidgetDemoState extends State<StatefullWidgetDemo> with WidgetsBi
   {
 
     WidgetsBinding.instance.addObserver(this);
-    getlogintoken().then((val) => setState(() {
-      islogged = val;
-    }));
     super.initState();
-
+    getlogintoken().then((val) {
+      setState(() {
+        islogged = val;
+      });
+    });
   }
   Future<String> getlogintoken() async {
     var login = await SharedPreferencesTest().checkIsLogin("1");

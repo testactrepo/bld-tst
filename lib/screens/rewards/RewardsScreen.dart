@@ -25,7 +25,7 @@ class _RewardsState extends State<Rewards> with SingleTickerProviderStateMixin
   User user;
   var getData;
   String mypoints="0";
-  bool istest=false,dis10=false,dis30=false,dis50 = false,timespent=false;
+  bool istest=false,dis10=false,dis30=false,dis50 = false,timespent=false,testpointclaimed=false;
   @override
   void initState()
   {
@@ -53,6 +53,7 @@ class _RewardsState extends State<Rewards> with SingleTickerProviderStateMixin
           mypoints = getData['mypoints'];
           istest = getData['istestcompleted'];
           timespent = getData['timespent'];
+          testpointclaimed = getData['istestpointclaimed'];
           dis10 = getData['Discount 10'];
           dis30 = getData['Discount 30'];
           dis50 = getData['Discount 50'];
@@ -218,10 +219,10 @@ class _RewardsState extends State<Rewards> with SingleTickerProviderStateMixin
                                                   }
                                                   else if(position ==1)
                                                   {
-                                                    if(istest) {
+                                                    if(istest && !testpointclaimed) {
                                                       var points = int.parse(
                                                           mypoints) + 200;
-                                                      FirebaseFirestore.instance.collection("profile").doc(getData['uid']).update({"mypoints": points.toString(),"istestcompleted": false,
+                                                      FirebaseFirestore.instance.collection("profile").doc(getData['uid']).update({"mypoints": points.toString(),"istestcompleted": true,"istestpointclaimed":true
                                                       }).whenComplete(() {
                                                         setState(() {
 

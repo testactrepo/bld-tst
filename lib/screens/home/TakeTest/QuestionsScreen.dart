@@ -160,6 +160,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             transformer: ScaleAndFadeTransformer(),
             onPageChanged: onPageChanged,
             itemBuilder: (context, ques) {
+
               return Container(
                   width: SizeConfig.blockSizeHorizontal * 100,
                   height: SizeConfig.blockSizeVertical * 100,
@@ -399,8 +400,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
                                   SizeConfig.blockSizeVertical * 2,
                                   left: SizeConfig.blockSizeVertical * 2),
                             ),
-                            keyboardType: TextInputType.text,
-                            textInputAction: TextInputAction.done,
+                            maxLines: 30,
+                            keyboardType: TextInputType.multiline,
+                            textInputAction: TextInputAction.newline,
                           ),
 
                         ),
@@ -578,8 +580,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
       // updating data
 
       FirebaseFirestore.instance.collection("profile").doc(user.uid).update({
-        "testprogress": testprogress.toString(),
-        "istestcompleted": testprogress.toInt() > 98 ? true : false,
+        "testprogress": testprogress.toInt()>=97?"100":testprogress.toString(),
+        "istestcompleted": testprogress.toInt() >= 97 ? true : false,
       }).whenComplete(() {
 
       });

@@ -201,6 +201,7 @@ class _LoginViewState extends State<Login> {
                           children: [
                             Container(
                               width: SizeConfig.blockSizeHorizontal * 33,
+                       //       padding: EdgeInsets.only(right: countrycode.length<=2?SizeConfig.blockSizeHorizontal*3.5:SizeConfig.blockSizeHorizontal*0.05),
                               alignment: Alignment.bottomRight,
                               child:
                               Icon(
@@ -214,7 +215,7 @@ class _LoginViewState extends State<Login> {
                                   children: [
                                     Container(
                                       width:
-                                          SizeConfig.blockSizeHorizontal * 33,
+                                          countrycode.length<=2?SizeConfig.blockSizeHorizontal * 38:SizeConfig.blockSizeHorizontal * 33,
                                       height:
                                           SizeConfig.blockSizeVertical * 4.25,
                                       alignment: Alignment.centerLeft,
@@ -240,11 +241,10 @@ class _LoginViewState extends State<Login> {
                                       ),
                                     ),
                                     Container(
-                                      height: 2.5,
-                                      width:
-                                          SizeConfig.blockSizeHorizontal * 33,
+                                      alignment: Alignment.topLeft,
                                       color: AppColors.underline,
-                                      child: SizedBox(),
+                                      margin: EdgeInsets.only(right: countrycode.length<=2?SizeConfig.blockSizeHorizontal * 5:SizeConfig.blockSizeHorizontal * 0,),
+                                      child: SizedBox(width:countrycode.length<=2?SizeConfig.blockSizeHorizontal * 33:SizeConfig.blockSizeHorizontal * 33, height: 2.5,),
                                     )
                                   ],
                                 ),
@@ -357,7 +357,8 @@ class _LoginViewState extends State<Login> {
   }
 
   // country selected by user
-  void _onCountryChange(CountryCode countryCodeq) {
+  void _onCountryChange(CountryCode countryCodeq)
+  {
     setState(() {
       country = countryCodeq;
       countrycode = country.dialCode;
@@ -365,6 +366,10 @@ class _LoginViewState extends State<Login> {
   }
   getmargin(String code)
   {
+    if(code.length<=2)
+    {
+      return SizeConfig.blockSizeHorizontal*17.5;
+    }
     if(code.length<=3)
       {
         return SizeConfig.blockSizeHorizontal*10.5;
@@ -375,7 +380,7 @@ class _LoginViewState extends State<Login> {
       }
     else
       {
-        return SizeConfig.blockSizeHorizontal*4.5;
+        return SizeConfig.blockSizeHorizontal*5;
       }
   }
 }

@@ -85,6 +85,7 @@ class StringConstants {
   static const sop = "SOPs";
   static const sopdetail = "(STATEMENT OF PURPOSE)";
   static const swipeup = "swipe up for next question";
+  static const completed = "Completed";
   // option string
   static const sdisagree = "Strongly disagree";
   static const disagree = "Disagree";

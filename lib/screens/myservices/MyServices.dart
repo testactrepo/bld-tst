@@ -21,6 +21,7 @@ class _MyservicesState extends State<Myservices>
   User user;
   var getData;
   int index=0;
+  bool testcompleted = false;
   @override
   void initState()
   {
@@ -36,6 +37,7 @@ class _MyservicesState extends State<Myservices>
         var data = postdata;
         data.docs.forEach((element) {
           getData = element.data();
+          testcompleted = getData['istestcompleted'];
         });
       });
     });
@@ -186,7 +188,7 @@ class _MyservicesState extends State<Myservices>
                           ],
                         ),
                         child: Text(
-                          StringConstants.resme.toUpperCase(),
+                         testcompleted?StringConstants.completed: StringConstants.resme.toUpperCase(),
                           style: TextStyle(
                               fontFamily: StringConstants.font,
                               fontWeight: FontWeight.w700,
