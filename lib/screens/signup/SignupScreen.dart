@@ -734,7 +734,6 @@ class _SignupViewState extends State<Signup> {
                                         widget.phonenumber)
                                     .snapshots()
                                     .listen((postdata) {
-                                  print("dfdgf" + postdata.docs.toString());
                                   setState(() {
                                   isloading = false;
                                   });

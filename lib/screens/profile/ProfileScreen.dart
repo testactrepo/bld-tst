@@ -16,7 +16,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:images_picker/images_picker.dart';
 import 'package:path/path.dart' as Path;
 
 class Profile extends StatefulWidget {
@@ -27,7 +27,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   User user;
   var getData;
-  PickedFile _image;
+  File _image;
   bool isupdated = false, ismobile = false, isdetail = false,isloading = false;
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController mobile = new TextEditingController();
@@ -836,7 +836,7 @@ class _ProfileState extends State<Profile> {
                 padding: const EdgeInsets.all(9.0),
                 child: InkWell(
                   onTap: () async {
-                    chooseCameraFile().then((PickedFile file) {
+                    chooseCameraFile().then((File file) {
                       print("file");
                       if (file != null) {
                         setState(() {
@@ -874,7 +874,7 @@ class _ProfileState extends State<Profile> {
                 padding: const EdgeInsets.all(9.0),
                 child: InkWell(
                   onTap: () async {
-                    chooseImageFile().then((PickedFile file) {
+                    chooseImageFile().then((File file) {
                       if (file != null) {
                         setState(() {
                           //  loading = true;
@@ -929,19 +929,29 @@ class _ProfileState extends State<Profile> {
           ),
         ]));
   }
-  Future<PickedFile> chooseCameraFile() async {
-    await ImagePicker().getImage(source: ImageSource.camera).then((image) {
+  Future<File> chooseCameraFile() async {
+    /*await ImagePicker().getImage(source: ImageSource.camera).then((image) {
       setState(() {
         _image = image;
+      });
+    });*/
+    await ImagesPicker.openCamera(pickType: PickType.image,maxTime: 30).then((value) {
+      setState(() {
+        _image = new File(value.elementAt(0).path);
       });
     });
     return _image;
   }
 
-  Future<PickedFile> chooseImageFile() async {
-    await ImagePicker().getImage(source: ImageSource.gallery).then((image) {
+  Future<File> chooseImageFile() async {
+   /* await ImagePicker().getImage(source: ImageSource.gallery).then((image) {
       setState(() {
         _image = image;
+      });
+    });*/
+    await ImagesPicker.pick(count:1,pickType: PickType.image).then((value) {
+      setState(() {
+        _image = new File(value.elementAt(0).path);
       });
     });
     return _image;
